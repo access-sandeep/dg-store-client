@@ -10,14 +10,10 @@ const loginSlice = createSlice({
             console.log(`Requesting login...`)
         },
         logout: (state:Array<AccessToken>, action:FetchLoginAction) => {
-            state = [action.payload]
-            console.log(`Logging out...`);
+            state.pop();
         },
         successActions: (state:Array<AccessToken>, action:FetchLoginAction) => {
-            state.push({
-                access_token: action.payload.access_token,
-                user_id: action.payload.user_id
-            });
+            state.push(...[action.payload]);
         },
         errorActions: (state:Array<AccessToken>, action:DispatchLogin) => {
             return console.log("Error on success", action.payload);

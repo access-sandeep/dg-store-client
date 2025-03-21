@@ -37,7 +37,7 @@ export default function Products() {
         }
     }, [products, store]);
    
-    const addToCartAction = (product:ActionProduct)=>{
+    const addToCartAction = (event: any, product:ActionProduct)=>{
         store.dispatch(postCart({
             url: "cart/add", 
             method: "POST", 
@@ -50,6 +50,7 @@ export default function Products() {
         }));
 
         setCart(store.getState().cart);
+        console.log("Product selected >>> ", product);
     };
     return (
         <>
@@ -58,11 +59,6 @@ export default function Products() {
                     return <ProductCard product={p} onAddToCart={addToCartAction} key={p.id} />
                 })}
             </div>
-            <ul>{cart.map((crt:any)=>{
-                return <li key={crt.unique_cart_item_id}>
-                    {crt.unique_cart_item_id}  &copy; {crt.product_details.name}
-                </li>
-            })}</ul>
         </>
     )
 }

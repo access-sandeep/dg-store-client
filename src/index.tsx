@@ -13,6 +13,7 @@ import ErrorPage from './modules/common/ErrorPage';
 import ContactUs from './modules/ContactUs';
 import Home from './modules/Home';
 import Products from './modules/Products';
+import { CookiesProvider } from 'react-cookie';
 
 const router = createBrowserRouter([
   {
@@ -46,7 +47,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <RouterProvider router={router} />
+  <CookiesProvider><RouterProvider router={router} /></CookiesProvider>
 );
 
 reportWebVitals();

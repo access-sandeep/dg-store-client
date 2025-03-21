@@ -4,28 +4,17 @@ import Footer from "./common/Footer";
 import SideFilter from './common/SideFilter';
 import { Link, Outlet } from 'react-router-dom';
 import Nav from './common/Nav';
-import { useContext, useEffect, useState } from 'react';
-import Storecontext from '../contexts/storeContext';
-import { logout } from '../store/login';
+import { useContext } from 'react';
 import { showDropDown } from '../shared/animations/drop-down-menu';
+import LoggedInContext from '../contexts/loggedinContext';
 
 export default function Index({onLogout}: any) {
-    const store = useContext(Storecontext);
-    const [accessToken, setAccessToken] =  useState({access_token: "", user_id:""});
+    const loggedInContext = useContext(LoggedInContext);
     
-    useEffect(()=>{
-        store.subscribe(()=>{
-          setAccessToken(store.getState().login[0]);
-          console.log("From Index",store.getState().login[0]);
-        });
-      }, [store]);
-
     const doLogout = (e:any)=>{
         e.stopPropagation();
         e.preventDefault();
-        setAccessToken({access_token: "", user_id:""});
-        store.dispatch(logout(accessToken));
-        onLogout();
+        onLogout(e);
         showDropDown(e);
     }
 
