@@ -4,9 +4,11 @@ import { postLogin } from "../store/login";
 import HeaderAnnouncements from './common/HeaderAnnouncements';
 import React from "react";
 import Footer from "./common/Footer";
+import LoggedInContext from "../contexts/loggedinContext";
 
 export default function Login({onLoginSuccess}: any) {
     const store = useContext(Storecontext);
+    const authToken = useContext(LoggedInContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [keepLogin, setKeepLogin] = useState(false);

@@ -7,6 +7,7 @@ const http_request = ({dispatch, getState}: any) => (next:any)  => async (action
         case "products/fetchProduct":
         case "login/postLogin":
         case "cart/postCart":
+            console.log("The action from the api-request", action)
             httpRequests.send(dispatch, action);
         break;
         default:
