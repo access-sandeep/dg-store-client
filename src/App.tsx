@@ -10,6 +10,8 @@ import { logout, postLogin } from "./store/login";
 import HeaderAnnouncements from './modules/common/HeaderAnnouncements';
 import Footer from "./modules/common/Footer";
 import { useCookies } from 'react-cookie'
+import CategoriesContext from './contexts/categoriesContext';
+import { Category } from './types/categories';
 
 
 function App() {
@@ -19,6 +21,18 @@ function App() {
 
   const [cookies, setCookie] = useCookies(['access_token']);
   
+  const categories: Array<Category> = [
+          {id:1, image:'i1.jpeg', name:'All products', link:'/products/all'},
+          {id:2, image:'i2.jpeg', name:'Country side'},
+          {id:3, image:'i3.jpeg', name:'Country side'},
+          {id:4, image:'i4.jpeg', name:'Country side'},
+          {id:5, image:'i5.jpeg', name:'Country side'},
+          {id:6, image:'i6.jpeg', name:'Country side'},
+          {id:7, image:'i7.jpeg', name:'Country side'},
+          {id:8, image:'i8.jpeg', name:'Country side'},
+          {id:9, image:'i9.jpeg', name:'Country side'},
+          {id:10, image:'i10.jpeg', name:'Country side'},
+          {id:11, image:'i11.jpeg', name:'Country side'}];
 
   useEffect(()=>{
     let logged_in_token = store.getState().login[0];
@@ -32,18 +46,6 @@ function App() {
       setAccessToken(cookies.access_token);
       setLoggedIn(cookies.access_token!=="");
     }
-    // store.subscribe(()=>{
-    //   let logged_in_token = store.getState().login[0];
-    //   if(logged_in_token?.access_token!==undefined) {
-    //     setCookie("access_token", logged_in_token.access_token);
-    //     setAccessToken(logged_in_token);
-    //     setLoggedIn(logged_in_token.access_token!=="");
-    //   } else {
-    //     console.log("Cookie access token", cookies.access_token);
-    //     setAccessToken(cookies.access_token);
-    //     setLoggedIn(cookies.access_token!=="");
-    //   }
-    // });
   }, [cookies.access_token, setCookie, accessToken, loggedIn, cookies]);
 
   async function loginFormSubmit(email: string, password: string, keepLogin: boolean, evt: FormEvent<HTMLFormElement>) {
@@ -80,7 +82,7 @@ function App() {
   } else {
     authorizedPage = <Login onLoginSsubmit={loginFormSubmit} />;
   }
-  return <LoggedInContext.Provider value={accessToken.access_token}><Storecontext.Provider value={store as any}><ThemeContext.Provider value={"HomePage"}>{authorizedPage}</ThemeContext.Provider></Storecontext.Provider></LoggedInContext.Provider>;
+  return <LoggedInContext.Provider value={accessToken.access_token}><Storecontext.Provider value={store as any}><ThemeContext.Provider value={"HomePage"}><CategoriesContext value={categories}>{authorizedPage}</CategoriesContext></ThemeContext.Provider></Storecontext.Provider></LoggedInContext.Provider>;
 }
 
 export function Login({onLoginSsubmit}: any) {

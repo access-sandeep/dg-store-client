@@ -61,3 +61,318 @@
 .pure-react-icon-width {
   width: 30px;
 }
+
+/* New CSS Design */
+$button-hover: #f7f7f7;
+$anchor-color: rgba(32, 31, 31, 0.538);
+$black: #000;
+$white: #fff;
+$grey: #e2e2e2;
+$dark-grey: #3b3b3b;
+$box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+$red-button: #ff0000;
+$separator: #d2cdcd;
+
+.body {
+  font-family: Airbnb Cereal VF, Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
+
+.wrapper {
+  width: 90%;
+  margin:5px auto;
+
+  .logostrip {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .logo {
+      background-image: url(../public/images/common/svg/logo.svg);
+      width: 106px;
+      height: 35px;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .channels {
+      display: flex;
+      flex-direction: row;
+      gap:20px;
+      margin-left: 15%;
+      .channel1 > a {
+        color: $black;
+        margin: auto 0;
+        text-decoration: none;
+      }
+      .channel2 > a {
+        color: #6d6b6b;
+        margin: auto 0;
+        text-decoration: none;
+      }
+    }
+
+    .last{
+      display: flex;
+      flex-direction: row;
+      gap:10px;
+
+      .one, .two {
+        margin: auto 0;
+        padding: 10px;
+        &> a {
+          color: $anchor-color;
+          text-decoration: none;
+          font-weight: bold;
+        }
+        &:hover {
+          background-color: $button-hover;
+          border-radius: 20px;
+        }
+      }
+
+      .three {
+        .rounded-custom {
+          width:102px;
+          height: 48px;
+          border: 1px solid $anchor-color;
+          border-radius:25px;
+          padding:5px;
+          text-align:center;
+          &:hover {
+            box-shadow: $box-shadow;
+            cursor: pointer;
+          }
+          .button-content {
+            display: flex;
+            flex-direction: row;
+            gap:2px;
+            width: 60px;
+            height: 30px;
+            margin: auto auto;
+            .breadcrumb {
+              width:25px;
+              margin: auto 1px;
+              .breadcrumb-img{
+                object-fit: cover;
+              }
+            }
+  
+            .profileimage {
+              width:35px;
+              margin: auto 1px;
+              .profileimg {
+                object-fit: cover;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .searchbar {
+    width: 80%;
+    margin: 10px auto;
+    .roundedtest {
+      display:flex;
+      flex-direction: row;
+      justify-content: space-between;
+      border: 1px solid $grey;
+      border-radius: 50px;
+      box-sizing: border-box;
+      box-shadow: $box-shadow;
+      height:65px;
+      font-size: 13px;
+      font-weight: bold;
+
+      .section1, .section2, .section3, .section4 {
+        box-sizing: border-box;
+        text-align: left;
+        margin: auto 0px;
+        padding-left: 20px;
+        border-right: 1px solid $separator;
+      }
+
+      .section1, .section4 {
+        width:35%;
+      }
+
+      .section2, .section3 {
+        width:15%;
+      }
+
+      .section4 {
+        border:none;
+      }
+
+      .section4-wrapper {
+        display: flex;
+        flex-direction: row;
+        box-sizing: border-box;
+        margin: 0px auto;
+        justify-content: space-between;
+
+        .who-details {
+          text-align: left;
+        }
+      }
+
+      p {
+        margin:0;
+        padding:0;
+      }
+
+      .search-button {
+        margin: auto 10px;
+
+        .search-button-rounded {
+          border-radius: 55px;
+          padding: 13px;
+          width: 50px;
+          border: none;
+          background-color: $red-button;
+          color: $white;
+          font-weight: bold;
+        }
+      }
+
+      .search-destinations, .add-dates, .add-guests {
+        font-weight: normal;
+        font-size:15px;
+        color: $dark-grey;
+      }
+    }
+    
+  }
+
+  .main-content {
+    margin:25px 0;
+    border-top:1px solid $grey;
+    
+    .categories {
+      height:70px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .category {
+        font-size: 10px;
+        font-weight: bold;
+        height: 50px;
+        text-align: center;
+        margin: auto 7px;
+        color:$dark-grey;
+        .category-img {
+          width:35px;
+        }
+        a {
+          color:$black;
+          text-decoration: underline;
+        }
+
+        p {
+          box-sizing: border-box;
+        }
+      }
+    }
+
+    .cards-section {
+      margin:25px auto;
+      display:flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap:20px;
+      .main-card {
+        width:325px;
+        border-radius:12px;
+        .product-image {
+          box-sizing: border-box;
+          position:relative;
+          .prod {
+            width:100%;
+            border-radius:12px;
+          }
+
+          .featured {
+            position:absolute;
+            top:10px;
+            left:10px;
+            background-color:$white;
+            padding:5px;
+            border-radius:12px;
+            font-size:12px;
+            font-weight:bold;
+          }
+
+          .like {
+            position: absolute;
+            top:5px;
+            right:10px;
+            color: $dark-grey;
+          }
+        }
+
+        .card-content {
+          display:flex;
+          flex-direction: row;
+          justify-content: space-between;
+
+          .left-part {
+            .title {
+              font-size:16px;
+              font-weight: bold;
+              margin: 10px 0;
+            }
+
+            p {
+              padding:0;
+              margin:0;
+            }
+
+            .description, .arrival {
+              color: $dark-grey;
+            }
+
+            .price {
+              margin: 10px 0;
+              font-weight:bold;
+            }
+          }
+          .right-part {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 35px;
+            margin: 10px 10px;
+            font-size:14px;
+            font-weight:normal;
+            gap:2px;
+            .star {
+              color: $black;
+              margin-top:-3px;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  
+
+  .continue-exploring {
+    text-align: center;
+    .continue-exploring-text {
+      font-size:20px;
+      padding: 20px 0px;
+      color:$dark-grey;
+    }
+
+    .explore-btn {
+      border-radius: 7px;
+      border:none;
+      background-color: $black;
+      color: $white;
+      padding: 11px 21px;
+      font-weight: bold;
+    }
+  }
+}
